@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <style>
+            .cloud1 {
+                position: absolute;
+                width: 160px;
+                left: 0%;
+                top: 80px;
+                animation-name: cloud1;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+            @keyframes cloud1{
+                from {left:100%; opacity: 0;}
+                to {}
+            }
+            @keyframes sun {
+
+                0% {
+                    transform: rotate(-90deg);
+                    opacity: 0;
+                }
+            }
+
+
+            .cloud2 {
+                position: absolute;
+                width: 90px;
+                left: 12%;
+                top: 20px;
+                animation-name: cloud2;
+                animation-duration: 20s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+            @keyframes cloud2 {
+                from {left:100%; opacity:0;}
+            }
+
+            .sun {
+                width: 180px;
+                position: absolute;
+                display: block;
+                left: 50%;
+                margin-left: -90px;
+                top: -130px;
+                transform-origin: center 600px;
+                animation-name: sun;
+                animation: moon 20s linear infinite;
+            }
+
+            @keyframes sun{
+                0% {
+                    transform: rotate(90deg);
+                    opacity:0;
+                }
+            }
+            .city {
+                width: 1000px;
+                height: 600px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -40%);
+            }
+            .moon {
+                width: 160px;
+                position: absolute;
+                left: 50%;
+                margin-left: -80px;
+                top: -130px;
+                transform-origin: center 600px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <img src="city.png"  class="city">
+        <img src="cloud.png" class="cloud1">
+        <img src="cloud.png" class="cloud2">
+        <img src="moon.png" class="moon">
+        <img src="sun.png" class="sun">
+
+    </body>
+</html>

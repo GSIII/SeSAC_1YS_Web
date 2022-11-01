@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <style>
+            div {
+                width:100px;
+                height: 100px;
+                background: blue;
+                position: relative;
+                animation-name: anim;
+                animation-duration: 2s;
+                animation-iteration-count: 3;
+                animation-delay: 1s;
+            }
+
+            /* @keyframes anim {
+                from {left: 0px;}
+                to {left:100px;}
+                /* 0px에서부터 100px까지 2초걸리고 3번 반복한다.  
+            } */
+
+            @keyframes anim {
+                0% {left:0px;}
+                50% {left:200px;}
+                100% {left:100px;}
+            }
+
+            .div1 {
+                border-radius: 50px;
+                background: yellow;
+                animation-name:ball;
+                animation-delay: 2s;
+                animation-duration: 1s;
+                animation-iteration-count: 5;
+            }
+
+            @keyframes ball {
+                to {top:100px; opacity: 0;}
+                from {top:300px; opacity: 1;}
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <div class="div1"></div>
+    </body>
+</html>

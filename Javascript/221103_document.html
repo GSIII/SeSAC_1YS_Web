@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Document</title>
+        <script>
+            console.log(document.documentElement);//문서에 있는 모든 요소 가져와라
+            console.log(document.head);
+            console.log(document.title);//title안에 있는 것 가져와
+            console.log(document.URL);//내가 접속해 있는 url
+            console.log(document.domain);//내가 접속해 있는 domain
+
+
+        </script>
+    </head>
+    <body>
+        <img src="cat.jpg" width="100" height="100">
+        <img src="cat.jpg" width="100" height="100">
+        <img src="cat.jpg" width="100" height="100">
+        <div id="div1">
+            <input type="text" id="input1" value="입력값">
+            <p class="css1">p1</p>
+            <p class="css1">p2</p>
+            <div>
+                <p class="css1">p3</p>
+            </div>
+            <button type="button" onclick="getData();">input 버튼</button>
+            <button type="button" onclick="getData2();">p태그 버튼</button>
+        </div>
+
+        <script>
+            console.log(document.getElementById('input1'));//id 가 input1인 것을 가져와서 요소를 출력하는 것
+            console.log(document.getElementsByClassName('css1'));//1개든 10개든 모두 리스트에 담겨져서 온다.
+            console.log(document.getElementsByClassName('css1')[0]);//특정 1개에만 접근하고 싶으면 index로 접근하면 된다.
+            console.log(document.getElementsByTagName('img'));
+
+            console.log(document.querySelector("#input1"));//queryselector안에는 css의 선택자가 들어간다.
+            console.log(document.querySelector('.css1'));//queryselector 는 여러개 중 가장 위에 있는 것을 선택한다.
+            console.log(document.querySelectorAll(".css1")); //여러개 선택하고 싶을 때
+            console.log(document.querySelectorAll(".css1")[1]); // 배열로 가져오기 때문에 index로 접근할 수 있다.
+            
+            // 1. 버튼을 누른다.
+            // 2. getData() 실행
+            // 3. id가 input1인 요소를 찾아서 input변수에 넣기
+            // 4. 선택된 요소의 value를 console에 출력
+            function getData() {
+                var input = document.getElementById("input1");
+                console.log(input.value);
+            }
+            function getData2() {
+                var p1=document.getElementsByClassName("css1")[0];
+                console.log(p1);
+                console.log(p1.value);//p태그는 value값이 존재하지 않기 때문에 undefined출력
+                console.log(p1.text);
+                console.log(p1.html);
+                console.log(p1.innerText); //가져오기만 한 것
+                console.log(p1.innerHTML);
+
+                // p1.innerText="p태그입니다.";값을 넣고 싶을 때
+                p1.innerHTML="<strong>p태그입니다.</strong>";//적은 문자열 중 p태그입니다. 만 출력 **innerText와는 달리 innerHTML은 element 안의 HTML이나 XML을 가져옵니다.
+                p1.innerText="<strong>p태그입니다.</strong>";//적은 문자열 그대로 출력 **이 속성은 element 안의 text 값들만을 가져옵니다.
+            } 
+
+        </script>
+    </body>
+</html>

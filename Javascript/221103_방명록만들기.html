@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script>
+            num = 1
+            var date = new Date();
+            //function write()는 document안에 이미 있는 함수이기 때문에 실행되지 않는다. 
+            function add() {
+                var tr1 = document.createElement("tr"); 
+                var td1 = document.createElement("td"); 
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+
+                table1.append(tr1);
+                tr1.append(td1);
+                tr1.append(td2);
+                tr1.append(td3);
+                tr1.append(td4);
+
+                td1.innerHTML=num;
+                num+=1
+                td2.innerText=document.getElementById("visitor").value;
+                td3.innerText=document.getElementById("contents").value;
+                td4.innerText=date.getFullYear()+'-'+parseInt(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+ ':'+date.getMinutes();
+            }
+
+        </script>
+    </head>
+    <body>
+        <div>방명록입니다.</div>
+        <div>작성자 <input type="text" id="visitor"></div>
+        <div>내용 <input type="text" id="contents"></div>
+
+        <button id="add" onclick="add();">작성</button>
+
+        <table border="1" cellspacing="0" id="table1">
+            <tr>
+                <td>번호</td>
+                <td>작성자</td>
+                <td>내용</td>
+                <td>작성일</td>
+            </tr>
+        </table>
+    </body>
+</html>

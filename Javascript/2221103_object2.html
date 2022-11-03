@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script>
+            var date=new Date();
+            console.log(date);
+
+            console.log(date.getYear()); //2000년대와 1900년대 구분하기 위해 122가 나온다. 1922년이면 22출력
+            console.log(date.getFullYear());
+            console.log(date.getMonth()); //정확한 달을 출력하려면 (date.getMonth()+1)해야함
+            console.log(date.getDate()); 
+            console.log(date.getDay()); //요일 일월화수목금토 에서 오늘이 몇번째 index에 위치하는지
+            console.log(date.getTime()); //1970년 1월 1일부터 지난 시간을 ms로 반환
+            console.log(date.getHours());
+            console.log(date.getMinutes());
+
+            console.log('============Math메소드====================');
+
+
+            console.log(Math.min());
+            console.log(Math.min(-10,2,10));
+            console.log(Math.min(0,'a',5)); //받은 값중에서 비교할 수 없는 값이 나오면 NaN값 반환
+            console.log(Math.max(-10,2,10));
+            console.log(Math.random());//0~1사이의 랜덤값 출력
+            var min=1; var max=10;
+            console.log(Math.random()*(max-min) + min); //최소값과 최대값 사이에서 랜덤값을 구하고 싶을 때
+            console.log(Math.round(1.2)); //소수점 첫번째 자리에서 반올림 둘째자리에서 반올림하고싶으면 *10 /10하면 된다.
+            console.log(Math.round(-1.7));
+            console.log(Math.floor(1.9));//내림
+            console.log(Math.ceil(1.1));//올림
+        </script>
+    </head>
+</html>

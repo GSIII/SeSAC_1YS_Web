@@ -1,8 +1,7 @@
 <html>
     <head>
         <script>
-            num = 1
-            var date = new Date();
+            var num=1;
             //function write()는 document안에 이미 있는 함수이기 때문에 실행되지 않는다. 
             function add() {
                 var tr1 = document.createElement("tr"); 
@@ -19,6 +18,7 @@
 
                 td1.innerHTML=num;
                 num+=1
+                var date=new Date();
                 td2.innerText=document.getElementById("visitor").value;
                 td3.innerText=document.getElementById("contents").value;
                 td4.innerText=date.getFullYear()+'-'+parseInt(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+ ':'+date.getMinutes();
@@ -31,7 +31,7 @@
         <div>작성자 <input type="text" id="visitor"></div>
         <div>내용 <input type="text" id="contents"></div>
 
-        <button id="add" onclick="add();">작성</button>
+        <button onclick="add();">작성</button>
 
         <table border="1" cellspacing="0" id="table1">
             <tr>

@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link href="./jquery-ui-1.13.2/jquery-ui.css">
+        <style>
+            div {width: 100px; height: 100px;}
+            .first {background-color: red;}
+            .second {background-color: yellow;}
+            .third {background-color: green;}
+            .sizeup {font-size: 30px;}
+        </style>
+        <script>
+            function second() {
+                $('div').switchClass('first','second',2000);//2초동안 서서히 바뀐다.
+            }
+            function sizeup() {
+                $('div').switchClass('second','sizeup',1000);
+            }
+            function third() {
+                $('div').switchClass('sizeup','third');
+            }
+            function first() {
+                $('div').switchClass('third','first');
+            }
+        </script>
+    </head>
+    <body>
+        <div class="first">div</div>
+        <button type="button" onclick="second()">first->second</button>
+        <button type="button" onclick="sizeup()">second->sizeup</button>
+        <button type="button" onclick="third()">sizeup->third</button>
+        <button type="button" onclick="first()">third->first</button>
+    </body>
+</html>
+
+<!-- switchClass(a,b) 는 a->b로 바뀐다
+다만 a가 없을경우에는 그냥 없는상태에서 b가 생긴다. 
+switchClass(a,b)->b
+switch(a,c)->c
+switch(b,d)->  b->d로 바뀌면서 위에 b는 사라지고 최종적으로 c,d가 남아있다. -->

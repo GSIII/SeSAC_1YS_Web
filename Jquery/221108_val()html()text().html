@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <style>
+    button {
+        margin: 4px;
+        cursor: pointer;
+    }
+    input {
+        margin: 4px;
+        color: blue;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ 
+    <div>
+        <button id="input1">Input</button>
+        <button id="change1">Change</button>
+        <button id="change2">Change</button>
+    </div>
+    <input type="text" value="click a button">
+    <div id="hello">Hello</div>
+    <div id="hi">hi</div>
+    
+    <script>
+        $( "#input1" ).click(function() {
+            $( "input" ).val( 'input' );//val(value)는 form tag에서만 동작한다. 여기서 html(value),text(value)사용 못한다
+            });
+        $('#change1').click(function(){
+            $('#hello').html('안녕하세요');//html(value)은 xml 문서에서만 사용 불가능하다. 여기서 val(value)는 사용못한다.
+        });
+        $('#change2').click(function(){
+            $('#hi').text('안녕');//text(value)는 xml,html문서에서 모두 사용 가능하다. 여기서도 val(value)사용 못한다.
+        });
+    </script>
+ 
+</body>
+</html>

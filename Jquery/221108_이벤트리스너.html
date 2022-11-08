@@ -1,0 +1,70 @@
+<html>
+    <head>
+        
+    </head>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <body>
+        body태그
+        <input type="text" id="input1">
+        <p id="alert"></p>
+        <div style="width:100px; height:500px; background-color:yellow" id="div1"></div>
+        <script>
+            //키보드 이벤트 keydown->(keypress)->keyup순서!!
+            //키보드를 눌렀을때 내가 누른 키의 객체가 e로 전달된다.
+            $('#input1').keydown(function(e){
+                console.log('keydown:',e.currentTarget.value);
+                $('#alert').text('글자가 입력됨, '+e.currentTarget.value); //이것을 keydown에 적용을 시켜 한박자 늦게 나온다. 
+                console.log('input keydown');//키보드를 눌렀을때 화면에 반영되지 않았을 때가 keydown
+                console.log(e);//keycode를 찾아보면 어디를 눌렀는지 알 수 있다. 
+                if(e.keyCode==13) {//엔터키의 키코드는 13/ 만약 13눌렀다면 
+                    console.log('enter key');//콘솔에 enter key뜨게 해라
+                }
+            });
+            $('#input1').keyup(function(e){
+                console.log('input keyup');
+            });
+            // //keypress : 현재는 사용되지 않는다. 
+            // $('#input1').keypress(function(e){//눌렀을때 화면에 반영이되었을때가 keypress(글자를 지울때 나타나지 않는 이유는 지운다는 행위는 반영하지 않기 때문이다. )
+            //     console.log('input keypress');
+            // });
+
+            // 1.	‘0’이라는 숫자를 입력한다
+            // 2.	사람이 손으로 키보드는 눌렀는데 아직 글자가 나오기 전->keydown
+            // 3.	실제 글자가 나올 때 ->keypress
+            // 4.	키보드에서 손을 뗀다->keyup
+            // 5.	결과적으로 down press up 순서로 이벤트가 발생한다. 
+            // 근데 요즘은 keypress가 사용되지 않으므로 keydown->keyup순으로 발생한다. 
+
+
+
+
+            //마우스 이벤트
+            $('#div1').click(function(e){//함수안에 이벤트 객체가 넘어온다(console에는 마우스의 위치나 타겟값이 들어온다.) 사용하지 않을거면 안써도 됨
+                console.log('div click');
+                console.log('e : ',e);
+            });
+            $('#div1').mouseover(function(){//특정 요소에 마우스를 올렸을때 event가 발생하는 것
+                console.log('div mouseover');
+            });
+            $('#div1').hover(function(){
+                console.log('div hover1');//mouseover와 차이점은 hover는 마우스를 올렸다가 뗐을때 감지한다.
+            }, function() {
+                console.log('div hover2');//이 함수를 추가하면 마우스를 올렸을때는 div hover1이 출력되고 마우스를 뗐을때 div hover2가 출력된다. 
+            });//올리고 뗐을때 다르게 동작하고 싶다면 두개의 함수를 보내면 된다. 
+
+            $(window).scroll(function(){
+                console.log('window scroll');
+            });
+
+            
+            // //로딩이벤트
+            // $(document).ready(function(){
+            //     alert('document.ready');
+            // });
+            // //아래 코드는 간결하게 사용하는 것 위에 내용을 주석처리 하지 않으면 두개는 같은 로딩이벤트이기 때문에 위에것이 실행되고 body내용이 실행되고 마지막으로 아래 이벤트가 실행된다. 
+            $(function(){
+                alert('ready');
+            });
+        </script>
+    </body>
+</html>

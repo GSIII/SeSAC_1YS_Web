@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <style>
+            table {
+                text-align: center;
+                width: 500px;
+                height: 500px;
+            }
+        </style>
+    </head>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        function add(day) {
+            $('#days').val(day);
+        }
+        function addContents(){
+            days=$('#days').val();
+            contents=$('#contents').val();
+            $('#date'+days).html(days+'<br>'+contents);
+        }
+    </script>
+    <body>
+        날짜 <input type="text" id="days">
+        내용 <input type="text" id="contents">
+        <button onclick="addContents()">작성</button>
+        <table>
+            <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="date1" onclick="add(1)">1</td>
+                <td id="date2" onclick="add(2)">2</td>
+            </tr>
+            <tr>
+                <td id="date3" onclick="add(3)">3</td>
+                <td id="date4" onclick="add(4)">4</td>
+                <td id="date5" onclick="add(5)">5</td>
+                <td id="date6" onclick="add(6)">6</td>
+                <td id="date7" onclick="add(7)">7</td>
+                <td id="date8" onclick="add(8)">8</td>
+                <td id="date9" onclick="add(9)">9</td>
+            </tr>
+            <tr>
+                <td id="date10" onclick="add(10)">10</td>
+                <td id="date11" onclick="add(11)">11</td>
+                <td id="date12" onclick="add(12)">12</td>
+                <td id="date13" onclick="add(13)">13</td>
+                <td id="date14" onclick="add(14)">14</td>
+                <td id="date15" onclick="add(15)">15</td>
+                <td id="date16" onclick="add(16)">16</td>
+            </tr>
+            <tr>
+                <td id="date17" onclick="add(17)">17</td>
+                <td id="date18" onclick="add(18)">18</td>
+                <td id="date19" onclick="add(19)">19</td>
+                <td id="date20" onclick="add(20)">20</td>
+                <td id="date21" onclick="add(21)">21</td>
+                <td id="date22" onclick="add(22)">22</td>
+                <td id="date23" onclick="add(23)">23</td>
+            </tr>
+            <tr>
+                <td id="date24" onclick="add(24)">24</td>
+                <td id="date25" onclick="add(25)">25</td>
+                <td id="date26" onclick="add(26)">26</td>
+                <td id="date27" onclick="add(27)">27</td>
+                <td id="date28" onclick="add(28)">28</td>
+                <td id="date29" onclick="add(29)">29</td>
+                <td id="date30" onclick="add(30)">30</td>
+            </tr>
+            <tr>
+                <td id="date31" onclick="add(31)">31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </body>

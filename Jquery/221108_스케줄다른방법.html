@@ -1,0 +1,133 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+​
+        <title> 내 스케줄 </title>
+​
+        <style>
+            td {
+                width: 100px;
+                height: 100px;
+            }
+            tr > td:first-child > p,
+            tr > th:first-child > p {
+                color: red
+            }
+            tr > td:last-child > p,
+            tr > th:last-child > p {
+                color: blue;
+            }
+            td > p:hover {
+                transform: scale(1.2);
+                cursor:pointer;
+            }
+        </style>
+    </head>
+​
+    <body > 
+        <div>
+            날짜 : <input type="text" id="date" readonly> <br>
+            내용 : <input type="text" id="content"> <br>
+            <button type="button" onclick="writeSchedule();">작성</button> <br>
+        </div> 
+        <div style="font-size:2em; color:green; text-align:center;">
+            2022년 7월        
+        </div> 
+​
+        <br>
+        
+        <table align="center" width=500 style="text-align:center;">
+            <tr>
+                <th>日</th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
+            </tr>
+            <tr>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p>1</p></td>
+                <td><p>2</p></td>
+            <tr>
+                <td><p>3</p></td>
+                <td><p>4</p></td>
+                <td><p>5</p></td>
+                <td><p>6</p></td>
+                <td><p>7</p></td>
+                <td><p>8</p></td>
+                <td><p>9</p></td>
+            </tr>
+            <tr>
+                <td><p>10</p></td>
+                <td><p>11</p></td>
+                <td><p>12</p></td>
+                <td><p>13</p></td>
+                <td><p>14</p></td>
+                <td><p>15</p></td>
+                <td><p>16</p></td>
+            </tr>
+            <tr>
+                <td><p>17</p></td>
+                <td><p>18</p></td>
+                <td><p>19</p></td>
+                <td><p>20</p></td>
+                <td><p>21</p></td>
+                <td><p>22</p></td>
+                <td><p>23</p></td>
+            </tr>
+            <tr>
+                <td><p>24</p></td>
+                <td><p>25</p></td>
+                <td><p>26</p></td>
+                <td><p>27</p></td>
+                <td><p>28</p></td>
+                <td><p>29</p></td>
+                <td><p>30</p></td>
+            </tr>
+            <tr>
+                <td><p>31</p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+            </tr>
+        </table>
+​
+        <script>
+            var target;
+            
+            $("td").on("click", function( obj ){
+                target = obj.currentTarget;
+                console.log( obj );
+                console.log(obj.currentTarget);//내가 누른 td값(31이면)<td><p>31</p></td>
+                console.log(obj.currentTarget.children);//children은 자식이 있든 없든 리스트 형태로 가져온다.
+                console.log(obj.currentTarget.children[0]);//<p>31</p>
+                $("#date").val($(obj.currentTarget.children[0]).text());//31가져온다.
+            });
+            function writeSchedule(){
+                console.log(target);
+                var content=$('#content').val();
+
+                if(target.children.length>1){//내용이 1개 이상이라면 
+                    var div=target.children[1];//달력의 내용칸에 새로운 내용이 덮어써질것이다. 
+                    div.innerText=content;
+                } else {
+                    //조건문 없이 이 아래 3줄만 쓴다면 쓴 내용이 계속 추가된다. 
+                    var div=document.createElement('div');
+                    div.innerText=content;
+
+                    $(target).append(div);
+                }
+            }
+        </script>
+    </body>
+</html>

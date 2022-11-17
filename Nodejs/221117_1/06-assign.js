@@ -33,7 +33,7 @@ let obj = {
     f:'2'
 }
 
-let {b : key1, a , c='three'} = obj; //변수의 이름을 바꾸고 싶으면 ,(콜론)이용한다
+let {b : key1, a , c='three'} = obj; //변수의 이름을 바꾸고 싶으면 :(콜론)이용한다
 console.log(a);
 console.log(key1);
 console.log(c);

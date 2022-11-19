@@ -1,3 +1,4 @@
+//promise 문법
 // new Promise(function(resolve, reject){
 
 // })

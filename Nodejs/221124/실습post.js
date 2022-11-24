@@ -8,24 +8,18 @@ app.use(express.json());
 
 
 app.get('/',(req,res)=>{
-    res.render('실습post');
+    res.render('axiosform');
 });
 
 
-//post로 전송
-app.post('/form',function(req,res){
-    var {id,password} = req.body;
-    console.log(req.body);
-    if (id==='iii' && password==='1234'){
-        res.send("<p style = 'color:blue'>로그인 성공</p>");
-    } else if (id !== 'iii' && password ==='1234'){
-        res.send({msg : '아이디를 다시 입력해주세요'});
-    } else if (id ==='iii' && password ==='1234'){
-        res.send({msg : '비밀번호를 다시 입력해주세요'});
-    }   
+app.post("/form", function(req,res){
+    if ( req.body.id === "1" && req.body.pwd === "1234" ){
+        res.send("<p style='color:blue'>로그인 성공</p>");
+    } else {
+        res.send("<p style='color:red;'>로그인 실패 ( 아이디 또는 비밀번호가 틀렸습니다.)");
+    }
 });
 
 app.listen(port, ()=>{
     console.log('server open : ', port);
 });
-

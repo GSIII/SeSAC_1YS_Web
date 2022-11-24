@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        //axios get을 이용한 통신
+        function sendGet(){
+            var form = document.getElementById("form_info");
+            //form 태그 안에 name속성이 name인 value를 가져오겠다
+            //form.name.value
+            axios({
+                method:"get", //어떤 메소드로 보낼건지
+                url : "/form",//어디의 경로로 보낼건지
+                //get으로 보낼 때는 params에 담아서 보낸다.
+                params:{
+                    name:form.name.value
+                }
+            }).then(function(res){
+                alert(res.data.msg);
+            });
+        }
+
+        function sendPost(){
+            var form = document.getElementById("form_info");
+            axios({
+                method:"post",
+                url : "/form",
+                //post로 보낼 때는 data에 담아서 보낸다.
+                data:{
+                    name:form.name.value
+                }
+            }).then(function(res){
+                alert(res.data.msg);
+            });
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="sendGet();">get전송</button>
+    <button type="button" onclick="sendPost();">post전송</button>
+    <form id="form_info">
+        <!-- 사용자가 입력한 값을 가져오게 하기 -->
+        <input type="text" name="name">
+    </form>
+    
+</body>
+</html>

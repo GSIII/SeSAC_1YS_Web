@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function ajaxGet() {
+            var form = document.getElementById("form_login");
+            $.ajax({
+                url: '/login',
+                type: 'GET',
+                data: { id: form.id.value, pw: form.pw.value },
+                success: function (data) {
+                    console.log("ajaxGet");
+                    document.querySelector("#result").innerHTML = data.msg;
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+        function ajaxPost() {
+            var form = document.getElementById("form_login");
+            $.ajax({
+                url: '/login',
+                type: 'POST',
+                data: { id: form.id.value, pw: form.pw.value },
+                success: function (data) {
+                    console.log("ajaxPost");
+                    document.querySelector("#result").innerHTML = data.msg;
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <form id="form_login">
+        아이디 : <input type="text" name="id"><br>
+        비밀번호 : <input type="password" name="pw"><br>
+        <button type="button" onclick="axiosGet();">로그인</button>
+        <button type="button" onclick="axiosPost();">로그인</button>
+        <div style="text-align:center;" id="result"></div>
+    </form>
+</body>
+
+</html>

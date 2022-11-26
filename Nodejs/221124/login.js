@@ -7,10 +7,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.get("/", function(req,res) {
-    res.render("ajax");
+    res.render("login");
 });
 app.get("/login", function(req,res){
-    if ( req.body.id == "1" && req.body.pw == "1234" ){
+    if ( req.query.id == "1" && req.query.pw == "1234" ){
         res.send({msg: "<p style='color:blue'>get 로그인 성공</p>"});
     } else {
         res.send({msg:"<p style='color:red;'>get 로그인 실패 ( 아이디 또는 비밀번호가 틀렸습니다.)"});

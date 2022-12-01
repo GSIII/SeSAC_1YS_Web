@@ -6,7 +6,7 @@ const cnn = mysql.createConnection({ //createConnection안에 적어둔 옵션�
     database: 'sesac_test'
 })
 
-cnn.query('select * from user',(err,result)=>{
+cnn.query('select * from user',(err,result)=>{//cnn.query안에 sql문을 써주면 그에 해당하는 일을 수행한다.
     if (err) throw err;
 
     console.log(result);//에러가 발생하지 않으면 result출력

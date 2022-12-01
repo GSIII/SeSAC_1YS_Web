@@ -1,63 +1,36 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
- 
-    <style>
- 
-      img {
-        width: 300px;
-        height: 200px;
-      }
- 
- 
- 
-      .ocean1 {
-        position: absolute;
-        top: 110px;
-        transform: skewY(30deg);
-        left: 40px;
-        z-index: 3;
-      }
- 
-      .ocean2 {
-        position: absolute;
-        top: 110px;
-        transform: skewY(30deg);
-        left: 150px;
-        z-index: 2;
-      }
- 
-      .ocean3 {
-        position: absolute;
-        top: 110px;
-        transform: skewY(30deg);
-        left: 300px;
-      }
- 
-    </style>
- 
-  </head>
- 
-  <body>
- 
+    <head>
+        <style>
+            img {
+                width: 300px;
+                height: 150px;
+                top:150px;
+                left:50px;
+                transform: skewY(30deg);
+                position: absolute;
+            }
 
-      <div class="ocean1">
-          <img src="바다.jpg"> 
-      </div>
- 
-      <div class="ocean2">
-         <img src="바다.jpg"> 
-      </div>
- 
-      <div class="ocean3">
-         <img src="바다.jpg"> 
-      </div>
- 
- 
-    </div>
- 
-  </body>
- 
+            .img1 {
+                left:150px;
+                z-index: 3;
+            }
+
+            .img2 {
+                left:250px;
+                z-index: 2;
+                
+            }
+            .img3 {
+                left:350px;
+                z-index: 1;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <img class="img1" src="sea.jpg">
+        <img class="img2" src="sea.jpg">
+        <img class="img3" src="sea.jpg">
+    </body>
 </html>

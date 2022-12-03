@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form_register">
+        <fieldset>
+            <legend>
+                welcome
+            </legend>
+            아이디 <input type="text" name="id"><br>
+            비밀번호 <input type="password" name="pwd"><br>
+            이름 <input type="text" name="name">
+            <div>
+                <button type="button" onclick="register_user();">register</button>
+            </div>
+            <div>
+                <button type="button" onclick="login_user();">login</button>
+            </div>
+        </fieldset>
+    </form>
+
+    <script>
+        function register_user() {
+            var form = document.getElementById('form_register');
+            axios({
+                method: 'post',
+                url: '/register',
+                data: {
+                    id: form.id.value,
+                    name: form.name.value,
+                    password: form.pwd.value
+                }
+            })
+                .then((response) => {
+                    return response.data;
+                })
+                .then((data) => {
+                    alert('회원가입이 완료되었습니다.')
+                })
+        }
+
+        function login_user(){
+            var form = document.getElementById('form_register');
+            axios({
+                method : 'post',
+                url : '/login',
+                data : {
+                    id: form.id.value,
+                    name: form.name.value,
+                    password: form.pwd.value
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

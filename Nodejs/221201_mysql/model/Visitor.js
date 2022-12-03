@@ -26,3 +26,36 @@ exports.register_visitor =(info,cb)=>{
         cb(result.insertId);
     })
 }
+
+exports.delete_visitor = (id,cb) =>{
+    var sql = `delete from visitor where id = ${id}`; //id는 controller에 있다. 삭제할 id가 필요하므로 table에서 id를 가져와야한다.
+
+    cnn.query(sql,(err,result)=>{
+        if (err) throw err;
+
+        console.log('delete result : ',result);
+        cb();
+    })
+}
+
+exports.get_visitor_by_id_model = (id,cb)=>{
+    var sql = `select * from visitor where id = ${id}`;
+
+    cnn.query(sql,(err,rows)=>{
+        if (err) throw err;
+
+        console.log('select by id : ',rows);
+        cb(rows[0]);//0번 index로 접근해서 다시 contorller로 보내준다.
+    })
+}
+
+exports.update_visitor = (info,cb)=>{
+    var sql = `update visitor set name ='${info.name}' ,comment ='${info.comment}' where id = ${info.id}`;
+
+    cnn.query(sql,(err,result)=>{
+        if(err) throw err;
+
+        console.log('update result : ', result);
+        cb();
+    })
+}

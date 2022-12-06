@@ -15,7 +15,7 @@ const routerUser = require("./routes/user");
 app.use('/user', routerUser);
 
 app.get('*', (req, res)=>{
-    res.send("주소가 존재하지 않습니다. 다시 한 번 확인해주세요.");
+    res.send("주소가 올바르지 않습니다.");
 });
 
 app.listen(port, ()=>{

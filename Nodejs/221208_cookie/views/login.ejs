@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form id="form_login">
+        id <input type="text" name="id">
+        pw <input type="password" name="pw">
+        <button type="button" onclick="login();">login</button>
+    </form>
+    <script>
+        function login(){
+            var form = document.getElementById('form_login');
+
+            axios({
+                method : 'post',
+                url : '/login',
+                data : {
+                    id : form.id.value,
+                    pw : form.pw.value
+                }
+            })
+            .then((res)=>{//서버의 응답
+                if(res.data) {
+                    alert('로그인 성공');
+                    window.location.href = '/'     //새로고침 하지 않고 자동으로 메인페이지로 가게
+                }
+                else {
+                    alert('로그인 실패');
+                    form.reset(); //input의 value값이 모두 사라는 함수reset()
+                }
+                console.log(res.data);//로그인 성공시 true, 실패시 false
+            })
+        }
+    </script>
+</body>
+</html>

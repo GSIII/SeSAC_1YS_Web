@@ -19,43 +19,38 @@ app.use(session({
     // secure : true //보안서버에서만 작동
 }))
 
-app.get('/',(req,res)=>{
-    res.render('main')
-});
-
-app.get('/loginPage',(req,res)=>{
-    res.render('loginPage')
-});
-
-app.get('/',(req,res)=>{
-    if(req.session.user) res.render('',{isLogin:true})//user키가 있으면 로그인을 한 상황 => isLogin:true를 클라이언트에게 보내서 그에 따른 동작을 처리하게한다. 예를 들어 navbar를 바꿔 보여주던지...
-    else res.render('',{isLogin:false})
-    // res.send('세션수업')
-});
 
 const user = {id:'a',pw:'1'};
 
-app.post('/login',(req,res)=>{//로그인 했을 때 req.session.user만들기
-    if(req.body.id == user.id && req.body.pw == user.pw){//로그인 성공했다면 
-        req.session.user = req.body.id; //내 공간에 내 아이디 저장한 것
-        res.send('로그인 성공');
-    }
-    else {
-        res.send('로그인 실패');
-    }
-    //req.session={}
-    // req.session.user = 'haha'; 
-    // res.send('세션 생성 성공');
+
+app.get('/',(req,res)=>{
+    //req.session.user에 값이 있는지 없는지 검사
+    console.log(req.session.user); //값이 undefined로 나오면 로그인 하지 않은 상태
+    if(req.session.user) res.render('main',{isLogin: true, id: req.session.user});
+    else res.render('main',{isLogin:false});
 });
 
-// app.destroy('/logout',(req,res)=>{//로그아웃했을 때 req.session.user없애버릴 것
-//     req.session.destroy(function(err){
-//         if(err) throw err;
+app.get('/login',(req,res)=>{
+    res.render('login')
+});
 
-//         res.send('로그아웃 성공');
-//     })
+app.post('/login',(req,res)=>{ //로그인페이지에서 로그인 성공 or 실패 확인
+    if(req.body.id == user.id && req.body.pw == user.pw){
+        req.session.user = req.body.id; //로그인 성공하면 로그인세션에 user라는 키를 만들어서 아이디를 저장한다.
+        res.send(true);
+    }else {
+        res.send(false);
+    }
+});
 
-// })
+app.get('/logout',(req,res)=>{
+    req.session.destroy(function(err){
+        if(err) throw err;
+
+        res.redirect('/');
+    })
+})
+
 
 app.listen(port,()=>{
     console.log('server open:',port);

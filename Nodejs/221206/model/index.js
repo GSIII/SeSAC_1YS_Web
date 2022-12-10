@@ -33,3 +33,36 @@ db.User = require("./User")(sequelize, Sequelize)
 // }
 
 module.exports = db;
+
+
+
+//========================================================================================
+//외래키 거는 방법
+
+db.User = require("./User")(sequelize, Sequelize);
+db.Product = require("./Product")(sequelize, Sequelize);
+db.Payment = require("./Payment")(sequelize, Sequelize);
+
+db.User.hasMany(db.Payment, {
+	foreignKey : "user_id", //payment table의 칼럼 이름
+	sourceKey : "user_id", //user 테이블의 칼럼 이름
+	onDelete : "cascade"
+});
+
+db.Payment.belongsTo(db.User,{
+    foreignKey : "user_id", 
+	sourceKey : "user_id", 
+	onDelete : "cascade"
+});
+
+db.Product.hasMany(db.Payment,{
+    foreignKey : "product_id", 
+	sourceKey : "product_id", 
+	onDelete : "cascade"
+});
+
+db.Payment.belongsTo(db.Product,{
+    foreignKey : "product_id", 
+	sourceKey : "product_id", 
+	onDelete : "cascade"
+})

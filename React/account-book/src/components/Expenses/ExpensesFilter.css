@@ -1,6 +1,6 @@
 .expenses-filter {
   color: white;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 
 .expenses-filter__control {
@@ -21,4 +21,8 @@
   padding: 0.5rem 3rem;
   font-weight: bold;
   border-radius: 6px;
+}
+
+.select_year {
+  color: black;
 }

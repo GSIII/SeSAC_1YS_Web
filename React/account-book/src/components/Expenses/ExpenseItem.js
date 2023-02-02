@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import ExpenseDate from "./ExpenseDate";
-import Card from "../UI/Card";
+import ExpenseDate from './ExpenseDate';
+import Card from '../UI/Card';
 // import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
@@ -12,7 +12,9 @@ const ExpenseItem = (props) => {
           <ExpenseDate date={props.date} />
           <div className="expense-item__description">
             <h2>{props.title}</h2>
-            <div className="expense-item__price">{props.amount}원</div>
+            <div className="expense-item__price">
+              {props.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
+            </div>
             <span>{props.type}</span>
           </div>
         </Card>

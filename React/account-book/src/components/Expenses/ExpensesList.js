@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import ExpenseItem from "./ExpenseItem";
-import "./ExpensesList.css";
+import ExpenseItem from './ExpenseItem';
+import './ExpensesList.css';
 
 const ExpensesList = (props) => {
   if (props.items.length === 0) {
-    return <h2 className="expenses-list__fallback">Found no expenses.</h2>;
+    return <h2 className="expenses-list__fallback">내용이 없습니다.</h2>;
   }
 
   return (

@@ -1,89 +1,67 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+
 const User = {
-  email: "test@example.com",
-  pw: "test2323@@@",
+  name: 'sesac',
+  pw: 'sesac',
 };
 
 export default function Modal({ onClose }) {
   const handleClose = () => {
     onClose?.();
   };
-  const [email, setEmail] = useState("");
-  const [pw, setPw] = useState("");
-
-  const [emailValid, setEmailValid] = useState(false);
-  const [pwValid, setPwValid] = useState(false);
-  const [notAllow, setNotAllow] = useState(true);
-
-  useEffect(() => {
-    if (emailValid && pwValid) {
-      setNotAllow(false);
-      return;
-    }
-    setNotAllow(true);
-  }, [emailValid, pwValid]);
+  const [name, setName] = useState('');
+  const [pw, setPw] = useState('');
 
   const handleEmail = (e) => {
-    setEmail(e.target.value);
-    const regex =
-      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-    if (regex.test(e.target.value)) {
-      setEmailValid(true);
-    } else {
-      setEmailValid(false);
-    }
+    setName(e.target.value);
   };
   const handlePw = (e) => {
     setPw(e.target.value);
-    const regex =
-      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
-    if (regex.test(e.target.value)) {
-      setPwValid(true);
-    } else {
-      setPwValid(false);
-    }
   };
   const onClickConfirmButton = () => {
-    if (email === User.email && pw === User.pw) {
-      alert("로그인에 성공했습니다.");
+    if (name === User.name && pw === User.pw) {
+      alert(`${name}님 반갑습니다.`);
+      handleClose();
     } else {
-      alert("등록되지 않은 회원입니다.");
+      alert('등록되지 않은 회원입니다.');
     }
   };
 
   return (
-    <Overlay>
-      <ModalWrap>
-        <CloseButton onClick={handleClose}>
-          <i className="fa-solid fa-xmark"></i>
-        </CloseButton>
-        <Contents>
-          <input
-            className="input"
-            type="text"
-            placeholder="이름을 입력하세요"
-            value={email}
-            onChange={handleEmail}
-          />
-          <input
-            className="input"
-            type="password"
-            placeholder="비밀번호를 입력하세요"
-            value={pw}
-            onChange={handlePw}
-          />
-          <button
-            onClick={onClickConfirmButton}
-            disabled={notAllow}
-            className="bottomButton"
-          >
-            로그인
-          </button>
-          <Button onClick={handleClose}>닫기</Button>
-        </Contents>
-      </ModalWrap>
-    </Overlay>
+    <>
+      <Overlay>
+        <ModalWrap>
+          {/* <CloseButton onClick={handleClose}>
+            <i className="fa-solid fa-xmark"></i>
+          </CloseButton> */}
+          <Contents>
+            <label>이름</label>
+            <input
+              className="input"
+              type="text"
+              placeholder="이름을 입력하세요"
+              value={name}
+              onChange={handleEmail}
+            />
+
+            <label>비밀번호</label>
+            <input
+              className="input"
+              type="password"
+              placeholder="비밀번호를 입력하세요"
+              value={pw}
+              onChange={handlePw}
+            />
+
+            <button onClick={onClickConfirmButton} className="bottomButton">
+              로그인
+            </button>
+            <Button onClick={handleClose}>닫기</Button>
+          </Contents>
+        </ModalWrap>
+      </Overlay>
+    </>
   );
 }
 
@@ -110,32 +88,26 @@ const ModalWrap = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const CloseButton = styled.div`
-  float: right;
-  width: 40px;
-  height: 40px;
-  margin: 20px;
-  cursor: pointer;
-  i {
-    color: #5d5d5d;
-    font-size: 30px;
-  }
-`;
+// const CloseButton = styled.div`
+//   float: right;
+//   width: 40px;
+//   height: 40px;
+//   margin: 20px;
+//   cursor: pointer;
+//   i {
+//     color: #5d5d5d;
+//     font-size: 30px;
+//   }
+// `;
 
 const Contents = styled.div`
   margin: 50px 30px;
-  h1 {
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 60px;
-  }
-  img {
-    margin-top: 60px;
-    width: 300px;
-  }
 `;
+
 const Button = styled.button`
-  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
   padding: 10px 20px;
   border: none;
   background-color: #ababab;
@@ -144,7 +116,7 @@ const Button = styled.button`
   font-style: italic;
   font-weight: 200;
   cursor: pointer;
-  &:hover {
+  /* &:hover {
     background-color: #898989;
-  }
+  } */
 `;

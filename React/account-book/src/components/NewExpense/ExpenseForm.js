@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-// import "./ExpenseForm.css";
+import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
-  const [enteredType, setEnteredType] = useState("");
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
+  const [enteredType, setEnteredType] = useState('');
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -35,9 +35,9 @@ const ExpenseForm = (props) => {
     };
 
     props.onSaveExpenseData(expenseData);
-    setEnteredTitle("");
-    setEnteredAmount("");
-    setEnteredDate("");
+    setEnteredTitle('');
+    setEnteredAmount('');
+    setEnteredDate('');
   };
 
   return (
@@ -55,7 +55,7 @@ const ExpenseForm = (props) => {
         <div className="new-expense__control">
           <label>금액</label>
           <input
-            type="text"
+            type="number"
             min="0"
             id="amount"
             value={enteredAmount}
@@ -67,42 +67,45 @@ const ExpenseForm = (props) => {
           <label>날짜</label>
           <input
             type="date"
-            min="2019-01-01"
-            max="2022-12-31"
+            min="2020-01-01"
+            max="2023-12-31"
             value={enteredDate}
             onChange={dateChangeHandler}
           />
         </div>
-        <div>
-          <label>
-            수입
+        <div className="new-expense__control_inout">
+          <span className="income">
+            <label for="수입">수입</label>
             <input
               type="checkbox"
               id="수입"
               value="수입"
               onChange={typeChangeHandler}
-              checked={enteredType === "수입" || ""}
+              checked={enteredType === '수입' || ''}
             />
-          </label>
-        </div>
-        <div>
-          <label>
-            지출
+          </span>
+
+          {/* </div>
+        <div className="new-expense__control"> */}
+          <span className="outcome">
+            <label for="지출">지출</label>
             <input
               type="checkbox"
               id="지출"
               value="지출"
               onChange={typeChangeHandler}
-              checked={enteredType === "지출" || ""}
+              checked={enteredType === '지출' || ''}
             />
-          </label>
+          </span>
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="button" onClick={props.onCancel}>
+        <button type="button" className="close" onClick={props.onCancel}>
           닫기
         </button>
-        <button type="submit">입력</button>
+        <button type="submit" className="submit">
+          입력
+        </button>
       </div>
     </form>
   );

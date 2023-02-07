@@ -6,8 +6,9 @@
 .expenses-filter__control {
   display: flex;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  /* justify-content: flex-end; */
+  flex-direction: column-reverse;
   margin: 1rem 0;
 }
 
@@ -17,10 +18,11 @@
 }
 
 .expenses-filter select {
-  font: inherit;
-  padding: 0.5rem 3rem;
-  font-weight: bold;
-  border-radius: 6px;
+  /* font: inherit; */
+  padding: 0.5rem 1rem;
+  /* border: none; */
+  /* font-weight: bold; */
+  /* border-radius: 6px; */
 }
 
 .select_year {

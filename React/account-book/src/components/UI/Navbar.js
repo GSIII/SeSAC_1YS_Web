@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Modal from './Modal';
-import './Navbar.css';
+import React, { useState } from "react";
+import Modal from "./Modal";
+import "./Navbar.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <>
       <header className="header">
-        <h1>my-pocket</h1>
+        <h1>My Pocket</h1>
         <a className="button" onClick={onClickButton}>
           로그인
         </a>

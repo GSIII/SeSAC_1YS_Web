@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import './ExpenseForm.css';
+import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState('');
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
-  const [enteredType, setEnteredType] = useState('');
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
+  const [enteredType, setEnteredType] = useState("");
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -35,9 +35,9 @@ const ExpenseForm = (props) => {
     };
 
     props.onSaveExpenseData(expenseData);
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
 
   return (
@@ -81,7 +81,7 @@ const ExpenseForm = (props) => {
               id="수입"
               value="수입"
               onChange={typeChangeHandler}
-              checked={enteredType === '수입' || ''}
+              checked={enteredType === "수입" || ""}
             />
           </span>
 
@@ -94,17 +94,17 @@ const ExpenseForm = (props) => {
               id="지출"
               value="지출"
               onChange={typeChangeHandler}
-              checked={enteredType === '지출' || ''}
+              checked={enteredType === "지출" || ""}
             />
           </span>
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="button" className="close" onClick={props.onCancel}>
-          닫기
-        </button>
         <button type="submit" className="submit">
           입력
+        </button>
+        <button type="button" className="close" onClick={props.onCancel}>
+          닫기
         </button>
       </div>
     </form>

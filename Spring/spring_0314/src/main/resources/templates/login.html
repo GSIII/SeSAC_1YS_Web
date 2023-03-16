@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+       function login(){
+          var form = document.getElementById('form_login');
+          var data = {
+            id : form.id.value,
+            pw : form.pw.value
+          }
+          axios.post(`/person/login`, data)
+          .then((res)=>{
+              console.log(res.data)
+
+              if (res.data ) {
+                alert('로그인 성공!');
+                form.action = "/person/info"; // <form action ="/person/ingo">
+                form.method = "post"; // <form action ="/person/ingo" method="post">
+                form.submit(); // <form> <button type="submit"> </form>
+             } else {
+                alert('로그인 실패!');
+                form.reset();
+             }
+          });
+      }
+    </script>
+</head>
+<body>
+<form id="form_login">
+  <input type="text" placeholder="id" name="id">
+  <br>
+  <input type="password" name="pw">
+  <br>
+  <button type="button" onclick="login();">로그인</button>
+</form>
+</body>
+</html>
+
+<!--
+세션이 없으니 새로고침하면 로그인 정보가 날아간다.
+로그인 -> axios 요청 보내고 -> 응답 -> info로 post 전송
+-->

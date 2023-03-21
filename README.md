@@ -34,8 +34,6 @@
 
 > [props](https://github.com/GSIII/SeSAC_1YS_Web/tree/main/React/230107)
 
-> [실습](https://github.com/GSIII/SeSAC_1YS_Web/tree/main/React/230110)
-
 > [hooks-useRef, useEffect](https://github.com/GSIII/SeSAC_1YS_Web/tree/main/React/230112)
 
 > [react-router-dom, redux](https://github.com/GSIII/SeSAC_1YS_Web/tree/main/React/230117)
